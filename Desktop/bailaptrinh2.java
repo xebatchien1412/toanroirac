@@ -113,7 +113,8 @@ public class bailaptrinh2 {
 				}
 				
 				if(!connected.isEmpty()) {  // Neu danh sach hang xom cua [0][i] khong rong~
-					 
+					  int maxColor = listPointWithColor[1][0]; // Mã màu lớn nhất đã được gán
+					 boolean finded = false; // Biến kiểm tra đã tìm thấy đỉnh không kề với đỉnh đang xét thỏa mãn chưa
 					  for(int k = 0 ; k < i; k++) {
 						if(!connected.contains(listPointWithColor[0][k])) {   // Tim dinh khong phai la hang xom cua [0][i] trong danh sach cac dinh da duoc to mau
 							boolean ok = true;
@@ -137,11 +138,11 @@ public class bailaptrinh2 {
 							continue;
 							
 						}
-					    
-						listPointWithColor[1][i] = listPointWithColor[1][k] + 1; // Neu khong thi to mau moi						
-						
-		   			 		   			      			
+					    // Tim ma mau lon nhat da duoc to
+						if(listPointWithColor[1][k] > maxColor)
+						maxColor = listPointWithColor[1][k];				   			      			
 					 }
+					  if(!finded)   listPointWithColor[1][i] = maxColor + 1; // Neu khong thi to mau moi		
 				}
 				else { listPointWithColor[1][i] = listPointWithColor[1][0];}// Neu dinh [0][i] khong co canh, dung mau so 0
 				
